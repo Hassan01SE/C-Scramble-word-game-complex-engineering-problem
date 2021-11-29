@@ -50,7 +50,7 @@ int occurance(char arr[], char a[],int n){
 	
 }
 
-bonus(char arr[],int n){
+int bonus(char arr[],int n){
 	int c=0;
 	int t=0;
 	for (int i =0; i < n; i++){
@@ -86,17 +86,23 @@ step1:
 int score=0;
 	
 	int n;
+	int test;
 	while (n<3 || n>15){
-	
+	 
 	cout<<"Enter the number of letters allowed to make a word: "<<endl;
-	cin>>n;
-	if (isdigit(n) == false){
-		cout<<"You have entered an invalid input causing the game to halt"<<endl;
-		break;
+	
+	while (!(cin >> n)){
+		cout<<"Error, only input a number!"<<endl;
+		cin.clear();
+		cin.ignore(123, '\n');
 	}
+	
+	//validate
+	
 	if (n<3 || n>15){
 		cout<<"Number of letters shouldn't be less than 3 or greater than 15"<<endl;
 	}
+	 
 }
 
 char letter_list[n];
@@ -126,19 +132,25 @@ int num;
 int result;
 do{
 cout<<"Assign a score to the letter "<<letter_list[i]<<" and it should be <= 10 and > 0"<<endl;
-cin>>num;
+while (!(cin >> num)){
+		cout<<"Error!, score should be only in integer value"<<endl;
+		cin.clear();
+		cin.ignore(123, '\n');
+	}
+
+//cin>>num;
 result=num_checker(num);
 
 }while (result!=1);
 letter_score[i]=num;
 }
 
-cout<<"The list of letters from which you have to make word of length: "<<n<<endl;
+cout<<"The list of letters from which you have to make a word of size of "<<n<<" letters only!"<<endl;
 print_list(letter_list,n);
 
 char word[n];
 for (int i=0;i<n;i++){
-	cout<<"enter the letter for your word: ";
+	cout<<"Input the complete word or enter each letter of the word one by one: ";
 	cin>>word[i];
 	if (isdigit(word[i]) == true){
 		cout<<"Invalid letter"<<endl;
@@ -184,13 +196,13 @@ cout<<"Your total score is: "<<score<<endl;
 
 step2:
 int game;
-cout<<"The game has ended! Do you wish to play it again? enter 1 to play "<<endl;
+cout<<"The game has ended! Enter 1 to play again\nEnter any other key to quit!"<<endl;
 cin>>game;
 if (game == 1){
 	goto step1;
 }
 else{
-	cout<<"Game has ended"<<endl;
+	cout<<"Game has ended!"<<endl;
 }
 
 }
