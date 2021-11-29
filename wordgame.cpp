@@ -150,7 +150,7 @@ print_list(letter_list,n);
 
 char word[n];
 for (int i=0;i<n;i++){
-	cout<<"Input the complete word or enter each letter of the word one by one: ";
+	cout<<"Enter each letter of the word one by one: ";
 	cin>>word[i];
 	if (isdigit(word[i]) == true){
 		cout<<"Invalid letter"<<endl;
